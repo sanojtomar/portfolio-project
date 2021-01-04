@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load staticfiles%}
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.79.0">
-    <title>Sanoj Tomar webiste</title>
+    <title>{{blog.title}}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
 	<!-- CSS only -->
@@ -50,7 +50,7 @@
           <a class="nav-link" href="{% static 'Coursera ALLM4NEVFN7E.pdf'%}">Resume</a>
         </li>
 		 <li class="nav-item">
-          <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
+          <a class="nav-link active" href="{% url 'allblogs' %}">Blog</a>
         </li>
          
       </ul>
@@ -59,42 +59,15 @@
 </nav>
 </header>
 
-<main>
-
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Hi, I am Sanoj.</h1>
-        <p class="lead text-muted">Hey, my name is Sanoj Tomar and I love to make Django websites. It's the thrill of handling the requests that the people want!</p>
-        <p>
-          <a href="mailto:sanojtomar@gmail.com" class="btn btn-primary my-2">Email Me</a>
-         
-        </p>
-		<img class="img-fluid" src="{% static 'Image1.png'%}"	/>
-      </div>
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        
-		{% for job in jobs.all %}
-        <div class="col">
-          <div class="card mb-4 box-shadow">
-           <img class="card-img-top" src="{{job.image.url}}"/>
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
-              </div>
-            </div>
-          </div>
-		  {% endfor %}
-        </div>
-      </div>
-    </div>
-  </div>
-
+<main role="main">
+	<div class="container" >
+		<h1 class="text-center pt-3">{{blog.title}}</h1>
+		<p class="text-center">{{blog.pub_date}}</p>
+		<img class="img-fluid" src="{{blog.image.url}}" />
+		<br/><br/>
+		{{blog.body}}
+		<hr/>
+	</div>
 </main>
 
 <footer class="text-muted py-5">
@@ -105,7 +78,6 @@
 
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
- 
-      
+
   </body>
 </html>
